@@ -8,4 +8,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "DoggoApp"
-include ':app'
+include(":app")
