@@ -23,7 +23,28 @@ showcase that test could be done in pure interfaces. However,
 mocking libraries are not made for nothing and they help reduce
 routine during code behavior testing.
 
+### Running project
+Building app:
+```bash
+./gradlew assembleDebug
+```
+
+Running tests:
+```bash
+./gradlew test
+```
+
+Running validations:
+```bash
+# Detekt
+./gradlew detekt
+
+# Lint
+./gradlew lint
+```
+
 ### TODO
-[] Nice UI
-[] Better commit history
-[] CI runners using GitHub Actions
+What could be done much better in future:
+- [ ] Nice UI.
+- [ ] Better commit history (not committing lot of things in single commit).
+- [ ] CI runners using GitHub Action (build + validation).
