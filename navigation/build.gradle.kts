@@ -49,8 +49,6 @@ android {
     }
 }
 
-
-
 dependencies {
     api("androidx.navigation:navigation-compose:${Version.Jetpack.navigation}")
 }
