@@ -40,7 +40,7 @@ android {
     }
 
     lint {
-        disable("MissingTranslation")
+        disable("MissingTranslation", "ObsoleteLintCustomCheck")
         isAbortOnError = true
         isCheckAllWarnings = true
         isWarningsAsErrors = true
