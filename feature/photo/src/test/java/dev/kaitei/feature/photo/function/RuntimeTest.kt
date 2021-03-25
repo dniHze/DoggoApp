@@ -33,11 +33,15 @@ internal class RuntimeTest {
 
         @Test
         fun `on init creates load data effect`() {
-            val init = initRuntime("foo", "bar", object : MockRepo() {
-                override suspend fun getBreedPhotos(id: String): ApiResult<List<String>, ApiError> {
-                    return ApiResult.apiFailure()
+            val init = initRuntime(
+                "foo",
+                "bar",
+                object : MockRepo() {
+                    override suspend fun getBreedPhotos(id: String): ApiResult<List<String>, ApiError> {
+                        return ApiResult.apiFailure()
+                    }
                 }
-            })
+            )
             val (_, effect) = init()
             runBlockingTest {
                 effect.invoke(this) {
