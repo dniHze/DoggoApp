@@ -13,8 +13,8 @@ android {
         applicationId = "dev.kaitei.doggoapp"
         setMinSdkVersion(21)
         setTargetSdkVersion(30)
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = Version.App.code
+        versionName = Version.App.name
 
         setTestInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
     }

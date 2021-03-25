@@ -18,14 +18,14 @@ internal class RuntimeTest {
 
         @Test
         fun `on init creates loading state`() {
-            val init = init("foo", "bar", MockRepo())
+            val init = initRuntime("foo", "bar", MockRepo())
             val (state) = init()
             assertTrue(state.isLoading)
         }
 
         @Test
         fun `on init creates loading state with same ids`() {
-            val init = init("foo", "bar", MockRepo())
+            val init = initRuntime("foo", "bar", MockRepo())
             val (state) = init()
             assertEquals("foo", state.id)
             assertEquals("bar", state.fullName)
@@ -33,7 +33,7 @@ internal class RuntimeTest {
 
         @Test
         fun `on init creates load data effect`() {
-            val init = init("foo", "bar", object : MockRepo() {
+            val init = initRuntime("foo", "bar", object : MockRepo() {
                 override suspend fun getBreedPhotos(id: String): ApiResult<List<String>, ApiError> {
                     return ApiResult.apiFailure()
                 }
@@ -55,7 +55,7 @@ internal class RuntimeTest {
                     return ApiResult.apiFailure()
                 }
             }
-            val init = init("foo", "bar", repo)
+            val init = initRuntime("foo", "bar", repo)
             val (_, effect) = init()
             runBlockingTest {
                 effect.invoke(this) {

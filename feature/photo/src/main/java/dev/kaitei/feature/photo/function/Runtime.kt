@@ -9,7 +9,7 @@ import dev.kaitei.feature.photo.navigation.PhotoDirections
 import oolong.effect.none
 import oolong.Effect
 
-internal fun init(
+internal fun initRuntime(
     id: String,
     fullName: String,
     repo: DoggoRepository

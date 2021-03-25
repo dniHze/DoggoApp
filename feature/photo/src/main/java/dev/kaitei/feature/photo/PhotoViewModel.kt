@@ -1,15 +1,16 @@
 package dev.kaitei.feature.photo
 
-import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.kaitei.doggo.api.DoggoRepository
-import dev.kaitei.feature.photo.function.init
+import dev.kaitei.feature.photo.function.initRuntime
 import dev.kaitei.feature.photo.function.update
 import dev.kaitei.feature.photo.function.view
 import dev.kaitei.feature.photo.navigation.PhotoDirections
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import oolong.Dispatch
 import oolong.runtime
 import timber.log.Timber
@@ -23,6 +24,9 @@ class PhotoViewModel @Inject constructor(
 
     private var runtimeJob: Job? = null
 
+    internal val state: StateFlow<Pair<Props, Dispatch<Msg>>>
+        get() = _state.asStateFlow()
+
     private val _state = MutableStateFlow<Pair<Props, Dispatch<Msg>>>(
         Props("", DataProps.Loading) { } to { }
     )
@@ -32,13 +36,8 @@ class PhotoViewModel @Inject constructor(
         runtimeJob?.cancel()
     }
 
-    @Composable
-    internal fun oolongRuntime(
-        id: String,
-        fullName: String
-    ): State<Pair<Props, Dispatch<Msg>>> {
+    internal fun setParams(id: String, fullName: String) {
         initRuntime(id, fullName)
-        return _state.collectAsState()
     }
 
     private fun initRuntime(id: String, fullName: String) {
@@ -47,7 +46,7 @@ class PhotoViewModel @Inject constructor(
                 if (runtimeJob == null) {
                     Timber.i("Initialize Oolong runtime")
                     runtimeJob =
-                        runtime(init(id, fullName, repo), update(repo), view(directions), ::render)
+                        runtime(initRuntime(id, fullName, repo), update(repo), view(directions), ::render)
                 }
             }
         }

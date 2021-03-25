@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -24,7 +25,7 @@ import oolong.Dispatch
 
 @Composable
 fun BreedList(viewModel: ListViewModel = viewModel()) {
-    val runtime by viewModel.oolongRuntime()
+    val runtime by viewModel.state.collectAsState()
     val (props, dispatch) = runtime
 
     Scaffold(

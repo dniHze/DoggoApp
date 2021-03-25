@@ -1,0 +1,54 @@
+name: Android Static Analysis
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    container:
+      image: dnihze/build-box:0.5.0-alpha
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Restore Gradle cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            /root/.gradle/caches
+            /root/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Run Android Lint
+        shell: bash
+        run: |
+          ./gradlew lint
+
+      - name: Run ReviewDog for lint
+        uses: dvdandroid/action-android-lint@v1.2
+        with:
+          reporter: github-pr-review
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          lint_xml_file: 'app/build/reports/lint-report.xml'
+
+  detekt:
+    runs-on: ubuntu-latest
+    container:
+      image: dnihze/build-box:0.5.0-alpha
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v2
+
+      - name: Run Detekt & Reviewdog
+        uses: DominuS-RU/Detekt-Action@v1.15.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reviewdog_reporter: github-pr-review
+          detekt_config: config/detekt.yml

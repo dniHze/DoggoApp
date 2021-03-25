@@ -8,6 +8,8 @@ import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -29,7 +31,11 @@ internal fun BreedPhotos(
     fullName: String,
     viewModel: PhotoViewModel = viewModel()
 ) {
-    val runtime by viewModel.oolongRuntime(id, fullName)
+    LaunchedEffect(id, fullName) {
+        viewModel.setParams(id, fullName)
+    }
+
+    val runtime by viewModel.state.collectAsState()
     val (props, dispatch) = runtime
 
     Scaffold(
