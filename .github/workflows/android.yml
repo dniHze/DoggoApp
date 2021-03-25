@@ -1,0 +1,68 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: dnihze/build-box:0.4.1
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Restore Gradle cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            /root/.gradle/caches
+            /root/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Run tests
+        shell: bash
+        run: |
+          ./gradlew test
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    container:
+      image: dnihze/build-box:0.4.1
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Restore Gradle cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            /root/.gradle/caches
+            /root/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Build APK
+        shell: bash
+        run: |
+          ./gradlew assembleDebug
+          
+      - name: Find and place artifacts
+        shell: bash
+        run: |
+          mkdir -p artifacts && find . -type f -name "*.apk" -exec cp -n {} ./artifacts \; > /dev/null 
+
+      - name: Store artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifacts
+          path: "artifacts/*"
