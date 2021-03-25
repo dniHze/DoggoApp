@@ -40,7 +40,7 @@ android {
     }
 
     lint {
-        disable("MissingTranslation")
+        disable("MissingTranslation", "ObsoleteLintCustomCheck")
         isAbortOnError = true
         isCheckAllWarnings = true
         isWarningsAsErrors = true
@@ -48,8 +48,6 @@ android {
         xmlOutput = file("$buildDir/reports/lint-report.xml")
     }
 }
-
-
 
 dependencies {
     api("androidx.navigation:navigation-compose:${Version.Jetpack.navigation}")

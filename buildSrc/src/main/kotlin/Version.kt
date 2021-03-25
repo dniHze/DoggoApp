@@ -13,16 +13,16 @@ object Version {
     }
 
     object Kotlin {
-        val stdlib = "1.4.31"
-        val coroutines = "1.4.3"
+        const val stdlib = "1.4.31"
+        const val coroutines = "1.4.3"
     }
 
     object Jetpack {
         const val appCompat = "1.2.0"
         const val core = "1.3.2"
         const val material = "1.3.0"
-        const val compose = "1.0.0-beta02"
-        const val lifecycle = "2.3.0"
+        const val compose = "1.0.0-beta03"
+        const val lifecycle = "2.4.0-alpha01"
         const val viewModelCompose = "1.0.0-alpha03"
         const val activityCompose = "1.3.0-alpha04"
         const val navigation = "1.0.0-alpha09"
@@ -49,7 +49,7 @@ object Version {
 
     object Util {
         const val dagger = "2.33"
-        const val accompanist = "0.6.2"
+        const val accompanist = "0.7.0"
         const val coil = "1.1.0"
         const val timber = "4.1.2"
     }

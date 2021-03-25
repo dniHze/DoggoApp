@@ -76,7 +76,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:${Version.Jetpack.viewModelCompose}")
     implementation("androidx.hilt:hilt-navigation-compose:${Version.Jetpack.hiltNavigation}")
 
-    implementation("dev.chrisbanes.accompanist:accompanist-coil:${Version.Util.accompanist}")
+    implementation("com.google.accompanist:accompanist-coil:${Version.Util.accompanist}")
     implementation("io.coil-kt:coil:${Version.Util.coil}")
 
     implementation("com.jakewharton.timber:timber:${Version.Util.timber}")

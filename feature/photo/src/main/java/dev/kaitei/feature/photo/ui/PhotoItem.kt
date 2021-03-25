@@ -16,9 +16,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import dev.chrisbanes.accompanist.coil.CoilImage
-import dev.chrisbanes.accompanist.imageloading.ImageLoadState
-import dev.chrisbanes.accompanist.imageloading.MaterialLoadingImage
+import com.google.accompanist.coil.CoilImage
+import com.google.accompanist.imageloading.ImageLoadState
+import com.google.accompanist.imageloading.MaterialLoadingImage
 import dev.kaitei.feature.photo.R
 
 private const val MIN_ALPHA = 0.2F
