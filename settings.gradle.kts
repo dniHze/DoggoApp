@@ -3,9 +3,17 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
+        maven("https://oss.sonatype.org/content/repositories/snapshots/")
+        jcenter()
     }
 }
 
 rootProject.name = "DoggoApp"
+
+include(":api")
 include(":app")
+include(":feature:list")
+include(":feature:photo")
+include(":model")
+include(":navigation")
+include(":ui")

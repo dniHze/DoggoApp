@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading_breeds">Loading dog breeds for you!</string>
+    <string name="title_dog_breeds">Dog breeds</string>
+</resources>

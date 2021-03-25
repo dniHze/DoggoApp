@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -51,7 +53,7 @@ android {
     }
 
     lint {
-        disable("MissingTranslation")
+        disable("MissingTranslation", "ObsoleteLintCustomCheck")
         isAbortOnError = true
         isCheckAllWarnings = true
         isWarningsAsErrors = true
@@ -61,6 +63,13 @@ android {
 }
 
 dependencies {
+    implementation(project(":model"))
+    implementation(project(":api"))
+    implementation(project(":feature:list"))
+    implementation(project(":feature:photo"))
+    implementation(project(":ui"))
+    implementation(project(":navigation"))
+
     implementation("androidx.appcompat:appcompat:${Version.Jetpack.appCompat}")
     implementation("androidx.core:core-ktx:${Version.Jetpack.core}")
     implementation("com.google.android.material:material:${Version.Jetpack.material}")
@@ -70,10 +79,16 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:${Version.Jetpack.lifecycle}")
     implementation("androidx.activity:activity-compose:${Version.Jetpack.activityCompose}")
 
-    implementation("dev.chrisbanes.accompanist:accompanist-coil:${Version.Util.accompanist}")
+    implementation("com.squareup.okhttp3:logging-interceptor:${Version.Network.okhttp}")
     implementation("io.coil-kt:coil:${Version.Util.coil}")
-    
+
+    implementation("com.google.dagger:hilt-android:${Version.Plugin.hilt}")
+    kapt("com.google.dagger:hilt-compiler:${Version.Plugin.hilt}")
+
+    implementation("com.jakewharton.timber:timber:${Version.Util.timber}")
+
     testImplementation("junit:junit:${Version.Test.junit}")
+
     androidTestImplementation("androidx.test.ext:junit:${Version.Test.extensions}")
     androidTestImplementation("androidx.test.espresso:espresso-core:${Version.Test.espresso}")
 }

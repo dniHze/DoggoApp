@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_unknown_title">Gosh, unknown error!</string>
+    <string name="error_unknown_description">For some unknown reason Doggo was not able to complete your request. Try to request one more time!</string>
+
+    <string name="error_network_title">Woof, check your network!</string>
+    <string name="error_network_description">It seems like your network connection either unstable or disabled. Check your network setting and try again.</string>
+
+    <string name="error_http_title">Oops, failed to request Dog.Ceo!</string>
+    <string name="error_http_description">For some reason Doggo failed to request API service. Try again!</string>
+    <string name="error_http_description_with_message">For some reason Doggo failed to request API service. Error message: %1$s. Try again!</string>
+
+    <string name="action_retry">Retry</string>
+</resources>

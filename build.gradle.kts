@@ -9,6 +9,8 @@ buildscript {
         classpath("com.android.tools.build:gradle:${Version.Plugin.agp}")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.Kotlin.stdlib}")
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${Version.Plugin.detekt}")
+        classpath("com.google.dagger:hilt-android-gradle-plugin:${Version.Plugin.hilt}")
+        classpath("de.mannodermaus.gradle.plugins:android-junit5:1.7.1.1")
     }
 }
 

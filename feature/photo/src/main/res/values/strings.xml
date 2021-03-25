@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_go_back">Go back</string>
+    <string name="loading_photos">Loading dog photos for you!</string>
+    <string name="content_description_loading">Loading photo</string>
+    <string name="dog_image_description">Dog image</string>
+</resources>

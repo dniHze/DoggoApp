@@ -678,4 +678,4 @@ style:
   WildcardImport:
     active: true
     excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
-    excludeImports: ['java.util.*', 'kotlinx.android.synthetic.*']
+    excludeImports: ['java.util.*', 'kotlinx.android.synthetic.*', 'androidx.compose.foundation.layout.*', 'androidx.compose.material.*', 'androidx.compose.runtime.*', 'androidx.compose.animation.core.*']
