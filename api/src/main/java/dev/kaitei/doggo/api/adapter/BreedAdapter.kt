@@ -1,6 +1,8 @@
 package dev.kaitei.doggo.api.adapter
 
-import com.squareup.moshi.*
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.JsonReader
+import com.squareup.moshi.JsonWriter
 import dev.kaitei.doggo.api.Breeds
 import dev.kaitei.doggo.model.Breed
 import dev.kaitei.doggo.model.SubBreed
