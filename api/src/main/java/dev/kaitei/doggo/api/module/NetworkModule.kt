@@ -3,6 +3,7 @@ package dev.kaitei.doggo.api.module
 import com.slack.eithernet.ApiResultCallAdapterFactory
 import com.slack.eithernet.ApiResultConverterFactory
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.addAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Lazy
 import dagger.Module
@@ -21,7 +22,7 @@ class NetworkModule {
     @Provides
     fun moshi(): Moshi =
         Moshi.Builder()
-            .add(BreedAdapter())
+            .addAdapter(BreedAdapter())
             .add(KotlinJsonAdapterFactory())
             .build()
 

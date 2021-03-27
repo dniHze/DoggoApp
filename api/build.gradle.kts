@@ -15,7 +15,8 @@ java {
 tasks.withType<KotlinCompile>() {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
-        freeCompilerArgs += listOf("-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi")
+        freeCompilerArgs += listOf("-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi," +
+                "kotlin.ExperimentalStdlibApi")
     }
 }
 
