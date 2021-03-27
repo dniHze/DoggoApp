@@ -6,7 +6,7 @@ object Version {
     }
 
     object Plugin {
-        const val agp = "7.0.0-alpha11"
+        const val agp = "7.0.0-alpha12"
         const val detekt = "1.16.0"
         const val hilt = "2.33-beta"
         const val junit5 = "1.7.1.1"
