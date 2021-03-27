@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test
 class BreedAdapterTest {
 
     private val moshi = Moshi.Builder()
-        .add(BreedAdapter())
+        .addAdapter(BreedAdapter())
         .addLast(KotlinJsonAdapterFactory())
         .build()
 

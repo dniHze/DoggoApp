@@ -109,7 +109,7 @@ class ApiResponseConverterFactoryTest {
 
     private fun buildService(): DoggoApi {
         val moshi = Moshi.Builder()
-            .add(BreedAdapter())
+            .addAdapter(BreedAdapter())
             .add(KotlinJsonAdapterFactory())
             .build()
 
